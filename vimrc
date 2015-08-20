@@ -29,6 +29,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'	" required
 Plugin 'rking/ag.vim'				" use the_silver_searcher
 Plugin 'kien/ctrlp.vim'			" ctrl-p
+Plugin 'fatih/vim-go'       " vim-go
 
 call vundle#end()            " required
 filetype plugin indent on    " required
