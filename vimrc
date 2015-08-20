@@ -16,6 +16,9 @@ set shiftwidth=2
 set scrolloff=2
 set mouse=a
 
+" Set shortcut to toggle tagbar
+nmap <F5> :TagbarToggle<CR>
+
 " Vundle-required configuration
 " To install Vundle: 
 " $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -30,6 +33,8 @@ Plugin 'gmarik/Vundle.vim'	" required
 Plugin 'rking/ag.vim'				" use the_silver_searcher
 Plugin 'kien/ctrlp.vim'			" ctrl-p
 Plugin 'fatih/vim-go'       " vim-go
+Plugin 'majutsushi/tagbar'  " tagbar
+Plugin 'Valloric/YouCompleteMe' " completion
 
 call vundle#end()            " required
 filetype plugin indent on    " required
