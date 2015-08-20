@@ -17,6 +17,9 @@ set scrolloff=2
 set mouse=a
 
 " Vundle-required configuration
+" To install Vundle: 
+" $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" $ vim +PluginInstall +qall
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
