@@ -7,6 +7,9 @@ export PATH=/usr/local/bin:$PATH
 # command line color
 export CLICOLOR=1
 
+# dircolors
+eval `dircolors .dotfiles/dircolors.ansi-dark`
+
 # golang
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/Developer/go/bin
@@ -35,6 +38,6 @@ alias dockervm='eval "$(boot2docker shellinit)"'
 alias rmdd="rm -rf ~/Library/Developer/DerivedData"
 
 # rbenv
-if which rbenv > /dev/null; then 
-	eval "$(rbenv init -)"; 
+if which rbenv > /dev/null; then
+	eval "$(rbenv init -)";
 fi
