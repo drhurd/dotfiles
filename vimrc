@@ -2,6 +2,7 @@
 syntax on
 set t_Co=256
 set number
+set linebreak
 
 "Search behavior
 set hlsearch   " highlight matches
@@ -48,6 +49,7 @@ Plugin 'rking/ag.vim'             " use the_silver_searcher
 Plugin 'kien/ctrlp.vim'           " ctrl-p
 Plugin 'fatih/vim-go'             " vim-go
 Plugin 'bling/vim-airline'        " statusline mod
+Plugin 'scrooloose/nerdtree'      " sidebar to see files and directories
 Plugin 'majutsushi/tagbar'        " tagbar
 Plugin 'Valloric/YouCompleteMe'   " completion
 Plugin 'scrooloose/syntastic'     " syntax errors
@@ -79,6 +81,9 @@ let g:ycm_autoclose_preview_window_after_insertion=1 "close scratch after comple
 nnoremap <Space> :CtrlP<CR>
 " Set folders to ignore
 set wildignore+=node_modules
+
+" NerdTree shortcut
+nnoremap T :NERDTreeToggle<CR>
 
 " Tagbar shortcut
 nnoremap t :TagbarToggle<CR>
