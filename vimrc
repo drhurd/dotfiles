@@ -17,6 +17,14 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+"Fix backspace
+set backspace=2
+
+"Indents and Tabs
+set smartindent 
+set tabstop=2
+set shiftwidth=2
+
 "Scrolling
 set scrolloff=2
 
@@ -57,6 +65,7 @@ Plugin 'tpope/vim-sleuth'         " smart indentation detection
 Plugin 'tpope/vim-fugitive'       " vim git integration (for airline)
 Plugin 'kchmck/vim-coffee-script' " coffeescript support
 Plugin 'lukaszkorecki/CoffeeTags' " coffeescript support for tagbar
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
