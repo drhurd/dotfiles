@@ -50,9 +50,10 @@ Plugin 'kien/ctrlp.vim'           " ctrl-p
 Plugin 'fatih/vim-go'             " vim-go
 Plugin 'bling/vim-airline'        " statusline mod
 Plugin 'scrooloose/nerdtree'      " sidebar to see files and directories
-Plugin 'majutsushi/tagbar'        " tagbar
+Plugin 'majutsushi/tagbar'        " tagbar to see go structs/functions
 Plugin 'Valloric/YouCompleteMe'   " completion
 Plugin 'scrooloose/syntastic'     " syntax errors
+Plugin 'airblade/vim-gitgutter'   " Shows git diffs in the gutter
 Plugin 'tpope/vim-sleuth'         " smart indentation detection
 Plugin 'tpope/vim-fugitive'       " vim git integration (for airline)
 Plugin 'kchmck/vim-coffee-script' " coffeescript support
@@ -72,9 +73,20 @@ endif
 
 " Syntastic
 let g:syntastic_auto_loc_list = 0
+let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_go_checkers = ['golint','govet']
 
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_insertion=1 "close scratch after completion selected
+
+" NerdTree shortcut
+nnoremap T :NERDTreeToggle<CR>
+
+" Tagbar shortcut
+nnoremap t :TagbarToggle<CR>
+
+" GitGutter off by default
+let g:gitgutter_enabled = 0
 
 " CtrlP
 " Map space to CtrlP
@@ -82,11 +94,20 @@ nnoremap <Space> :CtrlP<CR>
 " Set folders to ignore
 set wildignore+=node_modules
 
-" NerdTree shortcut
-nnoremap T :NERDTreeToggle<CR>
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
 
-" Tagbar shortcut
-nnoremap t :TagbarToggle<CR>
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+" Vim-go
+let g:godef_split = "split"
 
 " Gotags
 let g:tagbar_type_go = {
