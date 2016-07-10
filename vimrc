@@ -21,9 +21,7 @@ nnoremap <C-H> <C-W><C-H>
 set backspace=2
 
 "Indents and Tabs
-set smartindent 
-set tabstop=2
-set shiftwidth=2
+set smartindent
 
 "Scrolling
 set scrolloff=2
@@ -53,19 +51,29 @@ call vundle#rc()
 
 " Plugins
 Plugin 'gmarik/Vundle.vim'        " required
+" Search
 Plugin 'rking/ag.vim'             " use the_silver_searcher
 Plugin 'kien/ctrlp.vim'           " ctrl-p
-Plugin 'fatih/vim-go'             " vim-go
+" Display Features
 Plugin 'bling/vim-airline'        " statusline mod
 Plugin 'scrooloose/nerdtree'      " sidebar to see files and directories
 Plugin 'majutsushi/tagbar'        " tagbar to see go structs/functions
+" git
+Plugin 'airblade/vim-gitgutter'   " Shows git diffs in the gutter
+Plugin 'tpope/vim-fugitive'       " vim git integration (for airline)
+" Language support
 Plugin 'Valloric/YouCompleteMe'   " completion
 Plugin 'scrooloose/syntastic'     " syntax errors
-Plugin 'airblade/vim-gitgutter'   " Shows git diffs in the gutter
-Plugin 'tpope/vim-sleuth'         " smart indentation detection
-Plugin 'tpope/vim-fugitive'       " vim git integration (for airline)
+Plugin 'fatih/vim-go'             " vim-go
 Plugin 'kchmck/vim-coffee-script' " coffeescript support
 Plugin 'lukaszkorecki/CoffeeTags' " coffeescript support for tagbar
+Plugin 'groenewege/vim-less'      " syntax highlighting for .less files
+Plugin 'leafgarland/typescript-vim' " typescript syntax
+Plugin 'pangloss/vim-javascript'    " javascript syntax - required for vim-jsx
+Plugin 'mxw/vim-jsx'                " jsx syntax highlighting
+Plugin 'digitaltoad/vim-pug.git'    " jade/pug syntax highlighting
+" Other
+Plugin 'tpope/vim-sleuth'         " smart indentation detection
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -82,8 +90,11 @@ endif
 
 " Syntastic
 let g:syntastic_auto_loc_list = 0
-let g:syntastic_javascript_checkers = ['jsxhint']
-let g:syntastic_go_checkers = ['golint','govet']
+let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_signs = 1
+let g:syntastic_typescript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_insertion=1 "close scratch after completion selected
@@ -100,8 +111,7 @@ let g:gitgutter_enabled = 0
 " CtrlP
 " Map space to CtrlP
 nnoremap <Space> :CtrlP<CR>
-" Set folders to ignore
-set wildignore+=node_modules
+set wildignore+=node_modules " Set folders to ignore
 
 " The Silver Searcher
 if executable('ag')
