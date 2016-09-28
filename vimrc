@@ -3,6 +3,11 @@ syntax on
 set t_Co=256
 set number
 set linebreak
+set scrolloff=2 " 2 lines of padding for cursor
+
+" Key mappings
+nmap ; :
+set backspace=2
 
 "Search behavior
 set hlsearch   " highlight matches
@@ -17,24 +22,26 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-"Fix backspace
-set backspace=2
-
 "Indents and Tabs
 set smartindent
-
-"Scrolling
-set scrolloff=2
-
-" Mouse behavior
-set mouse=a
-set ttymouse=sgr
-
-" Key mappings
-nmap ; :
-nmap <Up> <C-u>
-nmap <Down> <C-d>
-inoremap {<CR> {<CR><CR>}<Up><Tab>
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+" Typescript - 2 spaces
+autocmd FileType typescript set expandtab
+autocmd FileType typescript set shiftwidth=2
+autocmd FileType typescript set softtabstop=2
+" Javascript - 2 spaces
+autocmd FileType javascript set expandtab
+autocmd FileType javascript set shiftwidth=2
+autocmd FileType javascript set softtabstop=2
+" Coffeescript - 2 spaces
+autocmd FileType coffee set expandtab
+autocmd FileType coffee set shiftwidth=2
+autocmd FileType coffee set softtabstop=2
+" Go - tabs not spaces
+autocmd FileType go set noexpandtab
+autocmd FileType go set tabstop=3
 
 """
 """ PLUGINS
@@ -56,6 +63,7 @@ Plugin 'rking/ag.vim'             " use the_silver_searcher
 Plugin 'kien/ctrlp.vim'           " ctrl-p
 " Display Features
 Plugin 'bling/vim-airline'        " statusline mod
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'      " sidebar to see files and directories
 Plugin 'majutsushi/tagbar'        " tagbar to see go structs/functions
 " git
@@ -66,33 +74,31 @@ Plugin 'Valloric/YouCompleteMe'   " completion
 Plugin 'scrooloose/syntastic'     " syntax errors
 Plugin 'fatih/vim-go'             " vim-go
 Plugin 'kchmck/vim-coffee-script' " coffeescript support
-Plugin 'lukaszkorecki/CoffeeTags' " coffeescript support for tagbar
 Plugin 'groenewege/vim-less'      " syntax highlighting for .less files
 Plugin 'leafgarland/typescript-vim' " typescript syntax
 Plugin 'pangloss/vim-javascript'    " javascript syntax - required for vim-jsx
 Plugin 'mxw/vim-jsx'                " jsx syntax highlighting
 Plugin 'digitaltoad/vim-pug.git'    " jade/pug syntax highlighting
 " Other
-Plugin 'tpope/vim-sleuth'         " smart indentation detection
+Plugin 'raimondi/delimitmate'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 " Airline
 set laststatus=2 " airline always on
-let g:airline_theme = 'solarized'
-" set airline bar depending on BGCOLOR env var
-if $BGCOLOR == 'light'
-    let g:airline_solarized_bg = 'light' " explicitly set airline background color
-else
-    let g:airline_solarized_bg = 'dark'
-endif
+let g:airline_theme = 'wombat'
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+
+"delimitMate
+let g:delimitMate_expand_cr=2
 
 " Syntastic
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_signs = 1
-let g:syntastic_typescript_checkers = ['eslint']
+let g:syntastic_typescript_checkers = ['tslint', 'eslint']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 
@@ -100,10 +106,10 @@ let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:ycm_autoclose_preview_window_after_insertion=1 "close scratch after completion selected
 
 " NerdTree shortcut
-nnoremap T :NERDTreeToggle<CR>
+nnoremap <Leader>T :NERDTreeToggle<CR>
 
 " Tagbar shortcut
-nnoremap t :TagbarToggle<CR>
+nnoremap <Leader>t :TagbarToggle<CR>
 
 " GitGutter off by default
 let g:gitgutter_enabled = 0
@@ -124,9 +130,6 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
-
-" Vim-go
-let g:godef_split = "split"
 
 " Gotags
 let g:tagbar_type_go = {
