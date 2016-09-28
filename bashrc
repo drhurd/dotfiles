@@ -8,7 +8,7 @@ export PATH=/usr/local/bin:$PATH
 export CLICOLOR=1
 
 # dircolors
-eval `dircolors .dotfiles/dircolors.ansi-dark`
+if [ $(which dircolors) ]; then eval `dircolors .dotfiles/dircolors.ansi-dark`; fi
 
 # golang
 export PATH=$PATH:/usr/local/go/bin
