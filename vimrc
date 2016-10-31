@@ -1,15 +1,21 @@
-"Appearance
+" Appearance
 syntax on
 set t_Co=256
 set number
 set linebreak
 set scrolloff=2 " 2 lines of padding for cursor
 
+" mouse
+set mouse=a
+
 " Key mappings
 nmap ; :
 set backspace=2
+noremap qq <Esc>
+inoremap qq <Esc>
+inoremap <Esc> <Nop>
 
-"Search behavior
+" Search behavior
 set hlsearch   " highlight matches
 set ignorecase " these 2 together are only case sensitive when search has an uppercase letter
 set smartcase
@@ -42,6 +48,8 @@ autocmd FileType coffee set softtabstop=2
 " Go - tabs not spaces
 autocmd FileType go set noexpandtab
 autocmd FileType go set tabstop=3
+autocmd FileType go set shiftwidth=3
+autocmd FileType go set softtabstop=3
 
 """
 """ PLUGINS
