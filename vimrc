@@ -1,7 +1,8 @@
-" Appearance
+"""
+""" General
+"""
 syntax on
 set t_Co=256
-set number
 set linebreak
 set scrolloff=2 " 2 lines of padding for cursor
 
@@ -28,7 +29,24 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-"Indents and Tabs
+" Line Numbers
+set number
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>
+" Not sure if i want these...
+" autocmd InsertEnter * :set number
+" autocmd InsertLeave * :set relativenumber
+
+"""
+""" Indents and Tabs
+"""
 set smartindent
 set expandtab
 set shiftwidth=2
