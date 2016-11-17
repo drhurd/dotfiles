@@ -5,16 +5,22 @@ syntax on
 set t_Co=256
 set linebreak
 set scrolloff=2 " 2 lines of padding for cursor
+set backupcopy=yes " so reload-on-save always works
+set backspace=2
 
 " mouse
 set mouse=a
 
 " Key mappings
+let mapleader=","
+" no one uses semicolon
 nmap ; :
-set backspace=2
+" remap qq to escape
 noremap qq <Esc>
 inoremap qq <Esc>
-inoremap <Esc> <Nop>
+" change macros to leader-m
+noremap q <Nop>
+noremap <Leader>m q
 
 " Search behavior
 set hlsearch   " highlight matches
@@ -30,7 +36,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Line Numbers
-set number
+set relativenumber
 function! NumberToggle()
   if(&relativenumber == 1)
     set number
