@@ -11,6 +11,7 @@ export GOPATH=$HOME/workspace
 
 source ~/.nvm/nvm.sh
 source ~/.git-completion.bash
+source ~/.secrets
 
 export LD_BIND_NOW=1
 
