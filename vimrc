@@ -7,6 +7,7 @@ set linebreak
 set scrolloff=2 " 2 lines of padding for cursor
 set backupcopy=yes " so reload-on-save always works
 set backspace=2
+colorscheme smyck
 
 " mouse
 set mouse=a
@@ -36,19 +37,17 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Line Numbers
+set number
 set relativenumber
 function! NumberToggle()
   if(&relativenumber == 1)
-    set number
+    set norelativenumber
   else
     set relativenumber
   endif
 endfunc
 
 nnoremap <C-n> :call NumberToggle()<cr>
-" Not sure if i want these...
-" autocmd InsertEnter * :set number
-" autocmd InsertLeave * :set relativenumber
 
 """
 """ Indents and Tabs
@@ -91,7 +90,6 @@ call vundle#rc()
 " Plugins
 Plugin 'gmarik/Vundle.vim'        " required
 " Search
-Plugin 'rking/ag.vim'             " use the_silver_searcher
 Plugin 'kien/ctrlp.vim'           " ctrl-p
 " Display Features
 Plugin 'bling/vim-airline'        " statusline mod
@@ -150,18 +148,6 @@ let g:gitgutter_enabled = 0
 " Map space to CtrlP
 nnoremap <Space> :CtrlP<CR>
 set wildignore+=node_modules " Set folders to ignore
-
-" The Silver Searcher
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
 
 " Gotags
 let g:tagbar_type_go = {
