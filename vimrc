@@ -1,5 +1,5 @@
 """
-""" General
+""" GENERAL
 """
 syntax on
 set t_Co=256
@@ -7,12 +7,39 @@ set linebreak
 set scrolloff=2 " 2 lines of padding for cursor
 set backupcopy=yes " so reload-on-save always works
 set backspace=2
-colorscheme smyck
+" set clipboard=unnamed " allows vim w/ +clipboard to work with osx pbcopy/pbpaste
 
 " mouse
 set mouse=a
 
-" Key mappings
+" Line Numbers
+set number
+set relativenumber
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber
+  else
+    set relativenumber
+  endif
+endfunc
+nnoremap <C-n> :call NumberToggle()<cr>
+
+" Searching
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+"""
+""" KEY MAPPINGS
+"""
 let mapleader=","
 " no one uses semicolon
 nmap ; :
@@ -36,21 +63,9 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" Line Numbers
-set number
-set relativenumber
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber
-  else
-    set relativenumber
-  endif
-endfunc
-
-nnoremap <C-n> :call NumberToggle()<cr>
 
 """
-""" Indents and Tabs
+""" INDENTS AND TABS
 """
 set smartindent
 set expandtab
@@ -86,51 +101,60 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
-
-" Plugins
 Plugin 'gmarik/Vundle.vim'        " required
-" Search
+
+" Filesystem
 Plugin 'kien/ctrlp.vim'           " ctrl-p
-" Display Features
+Plugin 'scrooloose/nerdtree'      " sidebar to see files and directories
+
+" Code analysis
+Plugin 'w0rp/ale'                 " async autocomplete
+Plugin 'majutsushi/tagbar'        " tagbar to see go structs/functions
+
+" Display
 Plugin 'bling/vim-airline'        " statusline mod
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'scrooloose/nerdtree'      " sidebar to see files and directories
-Plugin 'majutsushi/tagbar'        " tagbar to see go structs/functions
+
 " git
-Plugin 'airblade/vim-gitgutter'   " Shows git diffs in the gutter
 Plugin 'tpope/vim-fugitive'       " vim git integration (for airline)
+
 " Language support
 Plugin 'Valloric/YouCompleteMe'   " completion
-Plugin 'scrooloose/syntastic'     " syntax errors
 Plugin 'fatih/vim-go'             " vim-go
 Plugin 'kchmck/vim-coffee-script' " coffeescript support
 Plugin 'groenewege/vim-less'      " syntax highlighting for .less files
 Plugin 'leafgarland/typescript-vim' " typescript syntax
 Plugin 'pangloss/vim-javascript'    " javascript syntax - required for vim-jsx
-Plugin 'mxw/vim-jsx'                " jsx syntax highlighting
+Plugin 'mxw/vim-jsx'
 Plugin 'digitaltoad/vim-pug.git'    " jade/pug syntax highlighting
+
 " Other
 Plugin 'raimondi/delimitmate'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+"""
+""" PLUGIN SETTINGS
+"""
 " Airline
 set laststatus=2 " airline always on
 let g:airline_theme = 'wombat'
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 
-"delimitMate
+" delimitMate
 let g:delimitMate_expand_cr=2
 
-" Syntastic
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_enable_signs = 1
-let g:syntastic_typescript_checkers = ['tslint', 'eslint']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+" ale
+let g:ale_sign_error = '>>'
+let g:ale_lint_delay = 500
+let g:ale_echo_msg_format = '%linter%: %s'
+let g:ale_linters = {
+   \ 'jsx': ['eslint'],
+   \ 'javascript': ['eslint'],
+   \ 'go': ['gofmt -e', 'go vet', 'golint'],
+   \ }
 
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_insertion=1 "close scratch after completion selected
@@ -140,9 +164,6 @@ nnoremap <Leader>T :NERDTreeToggle<CR>
 
 " Tagbar shortcut
 nnoremap <Leader>t :TagbarToggle<CR>
-
-" GitGutter off by default
-let g:gitgutter_enabled = 0
 
 " CtrlP
 " Map space to CtrlP
