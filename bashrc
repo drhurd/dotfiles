@@ -13,6 +13,7 @@ source ~/.nvm/nvm.sh
 source ~/.git-completion.bash
 source ~/.aliases
 source ~/.secrets
+source /usr/local/bin/virtualenvwrapper.sh
 
 export LD_BIND_NOW=1
 

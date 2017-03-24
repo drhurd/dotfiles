@@ -153,6 +153,7 @@ let g:ale_echo_msg_format = '%linter%: %s'
 let g:ale_linters = {
    \ 'jsx': ['eslint'],
    \ 'javascript': ['eslint'],
+   \ 'typescript': ['eslint', 'tslint'],
    \ 'go': ['gofmt -e', 'go vet', 'golint'],
    \ }
 
