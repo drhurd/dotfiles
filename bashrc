@@ -9,11 +9,16 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/workspace/bin
 export GOPATH=$HOME/workspace
 
-source ~/.nvm/nvm.sh
-source ~/.git-completion.bash
-source ~/.aliases
-source ~/.secrets
-source /usr/local/bin/virtualenvwrapper.sh
+# load optional config files if they exist
+function source_if {
+  if [ -f $1 ]; then source $1; fi
+}
+source_if ~/.aliases
+source_if ~/.gcloudrc
+source_if ~/.git-completion.bash
+source_if ~/.nvm/nvm.sh
+source_if ~/.secrets
+source_if /usr/local/bin/virtualenvwrapper.sh
 
 export LD_BIND_NOW=1
 
