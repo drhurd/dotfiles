@@ -2,7 +2,7 @@
 export CLICOLOR=1
 
 # dircolors
-if [ $(which dircolors) ]; then eval `dircolors .dotfiles/dircolors.ansi-dark`; fi
+if [ $(which dircolors) ]; then eval `~/.dircolors .dotfiles/dircolors.ansi-dark`; fi
 
 # golang
 export PATH=$PATH:/usr/local/go/bin
@@ -29,3 +29,13 @@ export PATH=/usr/texbin:"$PATH"
 if which rbenv > /dev/null; then
 	eval "$(rbenv init -)";
 fi
+
+# AIRLAB-DO-NOT-MODIFY section:ShellWrapper {{{
+# Airlab will only make edits inside these delimiters.
+
+# Source Airlab's shell integration, if it exists.
+if [ -e ~/.airlab/shellhelper.sh ]; then
+  source ~/.airlab/shellhelper.sh
+fi
+# AIRLAB-DO-NOT-MODIFY section:ShellWrapper }}}
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

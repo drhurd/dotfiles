@@ -119,14 +119,13 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'       " vim git integration (for airline)
 
 " Language support
-Plugin 'Valloric/YouCompleteMe'   " completion
-Plugin 'fatih/vim-go'             " vim-go
-Plugin 'kchmck/vim-coffee-script' " coffeescript support
+"Plugin 'Valloric/YouCompleteMe'   " completion
+"Plugin 'fatih/vim-go'             " vim-go
 Plugin 'groenewege/vim-less'      " syntax highlighting for .less files
-Plugin 'leafgarland/typescript-vim' " typescript syntax
-Plugin 'pangloss/vim-javascript'    " javascript syntax - required for vim-jsx
-Plugin 'mxw/vim-jsx'
-Plugin 'digitaltoad/vim-pug.git'    " jade/pug syntax highlighting
+"Plugin 'leafgarland/typescript-vim' " typescript syntax
+"Plugin 'pangloss/vim-javascript'    " javascript syntax - required for vim-jsx
+"Plugin 'mxw/vim-jsx'
+"Plugin 'digitaltoad/vim-pug.git'    " jade/pug syntax highlighting
 
 " Other
 Plugin 'raimondi/delimitmate'
