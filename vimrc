@@ -138,7 +138,7 @@ filetype plugin indent on    " required
 """
 " Airline
 set laststatus=2 " airline always on
-let g:airline_theme = 'wombat'
+let g:airline_theme = 'sol'
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 
