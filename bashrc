@@ -4,16 +4,11 @@ export CLICOLOR=1
 # dircolors
 if [ $(which dircolors) ]; then eval `~/.dircolors .dotfiles/dircolors.ansi-dark`; fi
 
-# golang
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$HOME/workspace/bin
-export GOPATH=$HOME/workspace
-
 # load optional config files if they exist
 function source_if {
   if [ -f $1 ]; then source $1; fi
 }
-source_if ~/.aliases
+source_if ~/.bash_aliases
 source_if ~/.gcloudrc
 source_if ~/.git-completion.bash
 source_if ~/.nvm/nvm.sh
@@ -29,6 +24,11 @@ export PATH=/usr/texbin:"$PATH"
 if which rbenv > /dev/null; then
 	eval "$(rbenv init -)";
 fi
+
+# golang
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/workspace/bin
+export GOPATH=$HOME/workspace
 
 # AIRLAB-DO-NOT-MODIFY section:ShellWrapper {{{
 # Airlab will only make edits inside these delimiters.
