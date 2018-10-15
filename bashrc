@@ -25,10 +25,18 @@ if which rbenv > /dev/null; then
 	eval "$(rbenv init -)";
 fi
 
+# java
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH=$JAVA_HOME/bin:$PATH
+
 # golang
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/workspace/bin
 export GOPATH=$HOME/workspace
+
+###
+### Airbnb specific
+###
 
 # AIRLAB-DO-NOT-MODIFY section:ShellWrapper {{{
 # Airlab will only make edits inside these delimiters.

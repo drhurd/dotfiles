@@ -85,6 +85,10 @@ autocmd FileType go set noexpandtab
 autocmd FileType go set tabstop=3
 autocmd FileType go set shiftwidth=3
 autocmd FileType go set softtabstop=3
+" Python - 4 spaces
+autocmd FileType python set expandtab
+autocmd FileType python set shiftwidth=4
+autocmd FileType python set softtabstop=4
 
 """
 """ PLUGINS
