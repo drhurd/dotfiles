@@ -4,7 +4,7 @@
 # Defines helper functions to be used later on
 # brew_if runs brew install [program] if [program] is not installed
 function brew_if {
-  if [ -z `which $1` ]; then
+  if [[ -z "`which $1`" && -n "`which brew`" ]]; then
     brew install $1
   fi
 }
@@ -24,8 +24,8 @@ ln ~/.dotfiles/vimrc ~/.vimrc
 # VIM SETUP
 # ------------------------------
 # Links all dotfiles into home directory
-
-# TODO
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
 
 #
 # UTILITIES
