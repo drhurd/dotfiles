@@ -13,12 +13,11 @@ function brew_if {
 # SYMLINK DOTFILES
 # ------------------------------
 # Links all dotfiles into home directory
-ln ~/.dotfiles/bash_aliases ~/.bash_aliases
-ln ~/.dotfiles/bash_profile ~/.bash_profile
-ln ~/.dotfiles/bashrc ~/.bashrc
-ln ~/.dotfiles/git-completion.bash ~/.git-completion.bash
-ln ~/.dotfiles/tmux.conf ~/.tmux.conf
-ln ~/.dotfiles/vimrc ~/.vimrc
+ln -s ~/.dotfiles/zshenv ~/.zshenv
+ln -s ~/.dotfiles/zshrc ~/.zshrc
+ln -s ~/.dotfiles/tmux.conf ~/.tmux.conf
+ln -s ~/.dotfiles/vimrc ~/.vimrc
+ln -s ~/.dotfiles/zsh ~/.zsh
 
 #
 # VIM SETUP
