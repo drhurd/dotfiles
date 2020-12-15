@@ -106,11 +106,9 @@ Plugin 'gmarik/Vundle.vim'        " required
 
 " Filesystem
 Plugin 'kien/ctrlp.vim'           " ctrl-p
-Plugin 'scrooloose/nerdtree'      " sidebar to see files and directories
 
 " Code analysis
 Plugin 'w0rp/ale'                 " async autocomplete
-Plugin 'majutsushi/tagbar'        " tagbar to see go structs/functions
 
 " Display
 Plugin 'bling/vim-airline'        " statusline mod
